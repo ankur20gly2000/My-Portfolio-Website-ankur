@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankur Maurya | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Ankur</div>
+      <input type="checkbox" id="toggle-menu">
+      <label for="toggle-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span>Ankur Maurya</span></h1>
+      <p>Web Developer from Pratapgarh, UP</p>
+    </div>
+    <div class="hero-img">
+      <img src="images/am.webp" alt="Ankur Maurya">
+    </div>
+  </section>
+
+  <section id="about" class="about section">
+    <div class="about-text">
+      <h2 class="section-title">About Me</h2>
+      <center><p>I am a passionate web developer with a B.Tech in Computer Science. I love building clean, interactive websites and apps.</p></center>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2 class="section-title">My Services</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-code"></i>
+        <h3>Web Design</h3>
+        <p>Clean, responsive websites built to impress and convert.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-paint-brush"></i>
+        <h3>UI/UX Design</h3>
+        <p>Modern interfaces focused on user experience.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>App Development</h3>
+        <p>Cross-platform mobile apps using Flutter or React Native.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="section">
+    <h2 class="section-title">My Work</h2>
+    <div class="cards">
+      <div class="card portfolio-item">
+        <img src="images/work-1.png" alt="Food Delivery System">
+        <div class="portfolio-text">
+          <h3>Food Delivery System</h3>
+          <p>A full-stack food ordering and delivery application.</p>
+        </div>
+      </div>
+      <div class="card portfolio-item">
+        <img src="images/work-2.png" alt="Music App">
+        <div class="portfolio-text">
+          <h3>Music App</h3>
+          <p>Music streaming and playlist app with clean UI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> ankul20gly2000@gmail.com</p>
+        <p><i class="fas fa-phone"></i> 7880437392</p>
+        <div class="socials">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <form class="contact-form" name="submit-to-google-sheet">
+        <input type="text" name="Name" placeholder="Your Name" required />
+        <input type="email" name="Email" placeholder="Your Email" required />
+        <textarea name="Message" rows="5" placeholder="Your Message"></textarea>
+        <button type="submit" class="btn">Submit</button>
+        <span id="msg"></span>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Ankur Maurya. Made with ❤️</p>
+  </footer>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const msg = document.getElementById("msg");
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        msg.innerHTML = "Message sent successfully!";
+        setTimeout(() => msg.innerHTML = "", 5000);
+        form.reset();
+      })
+      .catch(error => console.error('Error!', error.message));
+    });
+  </script>
+</body>
+</html>
